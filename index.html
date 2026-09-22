@@ -8,8 +8,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
 </head>
 <body>
+  <div class="auth-gate" id="authGate">
+    <div class="auth-card">
+      <div class="brand"><span class="brand-mark">O</span><span>Festa da <b>Olga</b></span></div>
+      <span class="eyebrow">ÁREA COMPARTILHADA</span>
+      <h1>Bem-vinda à festa ✨</h1>
+      <p>Entre para planejar junto e ver as alterações em tempo real.</p>
+      <form id="authForm"><label>Seu e-mail<input id="authEmail" type="email" placeholder="voce@email.com" required></label><label>Crie uma senha<input id="authPassword" type="password" minlength="6" placeholder="Pelo menos 6 caracteres" required></label><p class="auth-message" id="authMessage"></p><button class="primary" id="loginBtn" type="submit">Entrar</button><button class="text-button" id="signupBtn" type="button">É a primeira vez? Criar acesso</button></form>
+    </div>
+  </div>
   <div class="app-shell">
     <aside class="sidebar">
       <div class="brand"><span class="brand-mark">O</span><span>Festa da <b>Olga</b></span></div>
@@ -25,7 +35,7 @@
       <div class="profile"><span class="avatar bruno">B</span><div><b>Bruno</b><small>Organizador</small></div><span>⌄</span></div></div>
     </aside>
     <main>
-      <header class="topbar"><button class="mobile-menu" id="menuBtn">☰</button><div class="crumb" id="heading"><b>Planejamento</b><span>Organize cada detalhe da festa</span></div><div class="top-actions"><button class="icon-button" id="alertBtn">⚑<span id="alertBubble"></span></button><button class="avatar bruno">B</button></div></header>
+      <header class="topbar"><button class="mobile-menu" id="menuBtn">☰</button><div class="crumb" id="heading"><b>Planejamento</b><span>Organize cada detalhe da festa</span></div><div class="top-actions"><button class="icon-button" id="alertBtn">⚑<span id="alertBubble"></span></button><button class="avatar bruno">B</button><button class="sign-out" id="signOutBtn" hidden>Sair</button></div></header>
       <section id="board" class="view active">
         <div class="board-toolbar"><div class="toolbar-copy"><h1>Vamos criar uma festa inesquecível ✨</h1><p>Arraste os cartões para acompanhar cada detalhe.</p></div><button class="primary" id="addBtn">＋ Adicionar item</button></div>
         <div class="filters"><div class="search">⌕ <input id="search" placeholder="Buscar no planejamento" /></div><select id="ownerFilter"><option value="all">Todos os responsáveis</option><option value="Bruno">Bruno</option><option value="Mariana">Mariana</option><option value="Bruno + Mariana">Compartilhados</option></select><select id="categoryFilter"><option value="all">Todas as categorias</option></select><button id="clearFilters">Limpar</button></div>
@@ -41,7 +51,9 @@
   <div class="modal-backdrop" id="modalBackdrop"></div>
   <dialog id="itemModal"><form method="dialog" id="itemForm"><div class="modal-top"><div><span class="eyebrow" id="modalEyebrow">NOVO ITEM</span><h2 id="modalTitle">O que você está planejando?</h2></div><button type="button" class="close" data-close>×</button></div><div id="formBody"></div><div class="modal-footer"><button type="button" class="delete-button" id="deleteBtn" hidden>Excluir item</button><span class="footer-spacer"></span><button type="button" class="secondary" data-close>Cancelar</button><button class="primary" id="saveBtn" value="default">Continuar</button></div></form></dialog>
   <dialog id="shareModal"><form method="dialog"><div class="modal-top"><div><span class="eyebrow">COMPARTILHAR FESTA</span><h2>Convide a Mariana</h2></div><button type="button" class="close" data-close>×</button></div><p class="modal-description">Quem receber o link poderá acompanhar e ajudar a organizar cada detalhe.</p><label>Link de acesso<div class="copy-row"><input value="festadaolga.app/convite/mariana" readonly><button type="button" id="copyBtn">Copiar</button></div></label><label>Permissão de acesso<select><option>Edição — pode organizar tudo</option><option>Visualização — apenas acompanhar</option></select></label><div class="share-note">✓ Alterações são sincronizadas para todos os organizadores.</div><div class="modal-footer"><button class="primary" data-close>Pronto</button></div></form></dialog>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
   <script src="extras.js"></script>
+  <script src="supabase-sync.js"></script>
 </body>
 </html>
